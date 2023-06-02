@@ -21,7 +21,7 @@ const Dashboard = () => {
 
   return (
     <div>
-      <h1>Bienvenido, {Nombre.split(' ')[3]}</h1>
+      <h1>Bienvenido, {Nombre.split(' ')[2]}</h1>
       <div>
       {
         clientes.length > 0 

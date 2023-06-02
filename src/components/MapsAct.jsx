@@ -1,4 +1,3 @@
-import dotenv from 'dotenv'
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useLocation } from 'react-router-dom'
@@ -8,7 +7,7 @@ import { getDetalleCliente } from '../Redux/reducers/ClientesReducer/reducers.js
 
 const MapsAct = () => {
   const { state } = useLocation()
-  const { clientId } = state
+  const { clientId, nombre } = state
   console.log(clientId)
 
   const { cliente } = useSelector((state) => state.clientes)
@@ -17,6 +16,8 @@ const MapsAct = () => {
   const Latitud = +cliente.Latitud
   const Longitud = +cliente.Longitud
   console.log(Latitud, Longitud)
+  console.log(cliente)
+  console.log(state)
 
   useEffect(() => {
     dispatch(getDetalleCliente(clientId))
@@ -25,6 +26,8 @@ const MapsAct = () => {
   return (
     <div>
       <h1>mapa</h1>
+      <h4>{nombre}</h4>
+      <h4>{cliente.Direccion}</h4>
       <GoogleMaps
         apiKey={ 'AIzaSyCvWflBR0PydhiLEPUv517clMCPHtWiRm4' }
         style={{ height: '400px', width: '100%' }}
