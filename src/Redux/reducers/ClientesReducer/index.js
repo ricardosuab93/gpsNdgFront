@@ -8,7 +8,8 @@ export const clientesSlice = createSlice({
   },
   reducers: {
     ObtenerClientesxDia: (state, action) => {
-      state.clientes = action.payload
+      state.clientes = action.payload,
+      state.cliente = {}
     },
     ObtenerDetalleCliente: (state, action) => {
         state.cliente = action.payload
