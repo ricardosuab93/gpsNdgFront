@@ -31,6 +31,8 @@ const Dashboard = () => {
             id={cliente.ClientePuntoVenta}
             nombre={cliente.DCliente}
             direccion={cliente.Direccion}
+            latitud={cliente.Latitud}
+            longitud={cliente.Longitud}
           />
         ))
         :
