@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import GoogleMaps from 'simple-react-google-maps'
 
-const MapsUpd = () => {
+const MapVendedor = () => {
   const [latitud, setLatitud] = useState(0)
   const [longitud, setLongitud] = useState(0)
   const [error, setError] = useState(null)
@@ -27,23 +27,23 @@ const MapsUpd = () => {
   return (
     <div>
       <h1>mapa de actualizacion</h1>
-       {latitud && longitud ? (
+      {latitud && longitud ? (
         <div>
           <p>Latitud: {latitud}</p>
           <p>Longitud: {longitud}</p>
+          <GoogleMaps
+            apiKey={'AIzaSyCvWflBR0PydhiLEPUv517clMCPHtWiRm4'}
+            style={{ height: '400px', width: '100%' }}
+            zoom={18}
+            center={{ lat: latitud, lng: longitud }}
+            markers={{ lat: latitud, lng: longitud }} //optional
+          />
         </div>
       ) : (
         <p>{error}</p>
       )}
-      <GoogleMaps
-        apiKey={'AIzaSyCvWflBR0PydhiLEPUv517clMCPHtWiRm4'}
-        style={{ height: '400px', width: '100%' }}
-        zoom={18}
-        center={{ lat: latitud, lng: longitud }}
-        markers={{ lat: latitud, lng: longitud }} //optional
-      />
     </div>
   )
 }
 
-export default MapsUpd
+export default MapVendedor

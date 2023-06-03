@@ -17,10 +17,20 @@ export const getClientesxDia = (userId) => (dispatch) => {
 }
 
 export const getDetalleCliente = (clientId) => (dispatch) => {
-  axios.get(
-    `${serverUrl}/NORDIGESAServices/api/Clientes/RutaDetalleClientexId?clientId=${clientId}`
-  ).then((response) => {
-    dispatch(ObtenerDetalleCliente(response.data[0]))
-  })
-  .catch((error) => console.error(error))
+  axios
+    .get(
+      `${serverUrl}/NORDIGESAServices/api/Clientes/RutaDetalleClientexId?clientId=${clientId}`
+    )
+    .then((response) => {
+      dispatch(ObtenerDetalleCliente(response.data[0]))
+    })
+    .catch((error) => console.error(error))
+}
+
+export const updateGpsCliente = (clientId, lat, long) => () => {
+  axios
+    .put(
+      `${serverUrl}/NORDIGESAServices/api/Clientes/ActualizaGpsCliente?cpv=${clientId}&lat=${lat}&long=${long}`
+    )
+    .catch((error) => console.error(error))
 }

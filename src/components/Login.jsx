@@ -49,7 +49,7 @@ const Login = () => {
         isLoggedIn ? (
           navigate('/dashboard', {state: usuario})
         ):(
-          <p>No encontrado</p>
+          <p>Ingresa tus credenciales</p>
         )
       }
     </div>

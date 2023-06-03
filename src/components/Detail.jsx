@@ -8,8 +8,8 @@ const Detail = (props) => {
       {/* <h5>{props.id}</h5> */}
       <h3>{props.nombre.split('-')[2]}</h3>
       <h5>{props.direccion}</h5>
-      <button onClick={() => navigate('/ubiActual', {state: { clientId: props.id, nombre: props.nombre, latitud: props.latitud, longitud: props.longitud} })}>Ubicacion actual</button>
-      <button onClick={() => navigate('/ubiUpdate', {state: { clientId: props.id } }) }>Actualizar GPS</button>
+      <button onClick={() => navigate('/ubiCliente', {state: { clientId: props.id, nombre: props.nombre, latitud: props.latitud, longitud: props.longitud} })}>Ver ubicacion del cliente</button>
+
     </div>
   )
 }

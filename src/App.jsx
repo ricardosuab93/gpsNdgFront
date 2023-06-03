@@ -2,8 +2,8 @@ import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Login from './components/Login'
 import Dashboard from './components/Dashboard'
-import MapsAct from './components/MapsAct'
-import MapsUpd from './components/MapsUpd'
+import MapVendedor from './components/MapVendedor'
+import MapCliente from './components/MapCliente'
 
 const App = () => {
   return (
@@ -11,8 +11,8 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Login />} />
         <Route path='/dashboard' element={<Dashboard />} />
-        <Route path='/ubiActual' element={<MapsAct />} />
-        <Route path='/ubiUpdate' element={<MapsUpd />} />
+        <Route path='/ubiCliente' element={<MapCliente />} />
+        <Route path='/ubiVendedor' element={<MapVendedor />} />
       </Routes>
     </>
   )
