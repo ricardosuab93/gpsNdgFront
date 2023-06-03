@@ -14,6 +14,6 @@ export const getUsuarioByLogin = (user, pass) => (dispatch) => {
       dispatch(ObtenerUsuario(response.data))
     })
     .catch((error) => {
-      // console.log(error)
+      console.error(error)
     })
 }
