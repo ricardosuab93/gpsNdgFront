@@ -1,8 +1,8 @@
 import axios from 'axios'
 import { ObtenerClientesxDia, ObtenerDetalleCliente } from './index.js'
 
-// const serverUrl = 'https://gpsback.onrender.com'
-const serverUrl = 'http://localhost:3001'
+const serverUrl = 'https://gpsback.onrender.com'
+// const serverUrl = 'http://localhost:3001'
 
 export const getClientesxDia = (userId) => (dispatch) => {
   console.log('reducer' + userId)
