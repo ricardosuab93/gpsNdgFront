@@ -11,7 +11,7 @@ import App from './src/App'
 ReactDOM.createRoot(document.getElementById('app')).render(
   <BrowserRouter>
     <Provider store={store}>
-      <App />
+      <App className='justify-center items-center'/>
     </Provider>
   </BrowserRouter>
 )

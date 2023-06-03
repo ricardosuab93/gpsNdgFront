@@ -25,16 +25,14 @@ const MapVendedor = () => {
   }, [])
 
   return (
-    <div>
-      <h1>mapa de actualizacion</h1>
+    <div className='w-full h-screen flex flex-col justify-center m-5'>
+      <h1 className='text-center text-lg font-bold'>Tu te encuentras aqui actualmente:</h1>
       {latitud && longitud ? (
         <div>
-          <p>Latitud: {latitud}</p>
-          <p>Longitud: {longitud}</p>
           <GoogleMaps
             apiKey={'AIzaSyCvWflBR0PydhiLEPUv517clMCPHtWiRm4'}
             style={{ height: '400px', width: '100%' }}
-            zoom={18}
+            zoom={17}
             center={{ lat: latitud, lng: longitud }}
             markers={{ lat: latitud, lng: longitud }} //optional
           />

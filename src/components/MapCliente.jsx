@@ -2,7 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useLocation, useNavigate } from 'react-router-dom'
 import GoogleMaps from 'simple-react-google-maps'
-import { getDetalleCliente,updateGpsCliente } from '../Redux/reducers/ClientesReducer/reducers.js'
+import {
+  getDetalleCliente,
+  updateGpsCliente
+} from '../Redux/reducers/ClientesReducer/reducers.js'
+import { BsPencilFill } from 'react-icons/bs'
 // import { Map, GoogleApiWraper, Marker } from 'google-maps-react'
 
 const MapCliente = () => {
@@ -18,7 +22,7 @@ const MapCliente = () => {
   const [lat, setLat] = useState(0)
   const [long, setLong] = useState(0)
   const [error, setError] = useState(null)
-  console.log(lat, long)
+  // console.log(lat, long)
 
   function getCurrentPosition() {
     // Verificar si el navegador soporta la geolocalización
@@ -44,9 +48,9 @@ const MapCliente = () => {
   }
 
   const handleButtonClick = (e) => {
-    console.log(clientId, lat, long)
+    // console.log(clientId, lat, long)
     dispatch(updateGpsCliente(clientId, lat, long))
-    alert("GPS ACTUALIZADO")
+    alert('GPS ACTUALIZADO')
     navigate(-1)
   }
 
@@ -55,21 +59,29 @@ const MapCliente = () => {
   }, [])
 
   return (
-    <div>
-      <div>
-        <h1>mapa</h1>
-        <h4>{nombre}</h4>
-        <h4>{cliente.Direccion}</h4>
+    <div className='w-full h-screen flex flex-col justify-center m-5'>
+      <div className='flex flex-row justify-between'>
         <div>
-          <label>
+          <h1 className='text-xl font-bold'>Ubicacion actual del cliente</h1>
+          <h4 className='text-lg font-semibold'>{nombre}</h4>
+          <h4 className='text-lg font-semibold'>{cliente.Direccion}</h4>
+        </div>
+        <div className='flex flex-row justify-center items-center'>
+          <label className='flex flex-row'>
             <input
+              className='hidden'
               type='checkbox'
               checked={!isButtonDisabled}
               onChange={handleCheckboxChange}
-            />
-            Editar
+            >
+            </input>
+              <BsPencilFill />
           </label>
-          <button disabled={isButtonDisabled} onClick={handleButtonClick}>
+          <button
+            className='bg-green-600 hover:scale-[1.01] ease-in-out rounded-lg disabled:bg-transparent disabled:text-white p-1 m-2'
+            disabled={isButtonDisabled}
+            onClick={handleButtonClick}
+          >
             Actualizar ubicacion
           </button>
         </div>

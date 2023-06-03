@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { getUsuarioByLogin } from '../Redux/reducers/UsuariosReducer/reducers.js'
+import ndg from '../images/ndg.png'
 
 function validate(login) {
   let errors = {}
@@ -47,47 +48,50 @@ const Login = () => {
     if (!login.user || !login.password) {
       return alert('Completa los campos de login')
     }
-    console.log(login.user)
+    // console.log(login.user)
     dispatch(getUsuarioByLogin(login.user, login.password))
   }
 
-  console.log(usuario)
+  // console.log(usuario)
 
   return (
-    <div className='flex flex-col items-center justify-center m-60 bg-slate-300'>
-      <form className='flex flex-col rounded-lg'>
-        <div className='m-2'>
-          <label className='text-center text-2xl text-slate-900'>
-            Usuario:{' '}
-          </label>
+    <div className='flex flex-col items-center justify-center bg-white rounded-2xl'>
+      <img src={ndg} alt='logo' />
+      <h3 className='text-2xl font-semibold text-gray-700 mt-4 mb-2'>
+        Actualizacion GPS de Clientes
+      </h3>
+      <form className='m-2'>
+        <div className=''>
+          <label className='text-lg font-medium'>Usuario</label>
           <input
             type='text'
-            placeholder='calcalde'
+            placeholder='usuario'
             name='user'
             value={login.user}
             onChange={handleChange}
-            className='text-center text-2xl border-teal-500 border-solid rounded-lg'
+            className='w-full border-2 rounded-lg text-center p-1 mt-1 bg-transparent'
           />
           {errors.user && <p className='text-red-600'>{errors.user}</p>}
         </div>
 
-        <div className='m-2'>
-          <label className='text-2xl text-slate-900'>Password: </label>
+        <div className=''>
+          <label className='text-lg font-medium'>Password</label>
           <input
             type='password'
             placeholder='••••••••'
             name='password'
             value={login.password}
             onChange={handleChange}
-            className='text-center text-2xl border-teal-500 hover:border-solid rounded-lg'
+            className='w-full border-2 rounded-lg text-center p-1 mt-1 bg-transparent'
           />
           {errors.password && <p className='text-red-600'>{errors.password}</p>}
         </div>
-        <div className=' flex flex-col'>
+        <div className='m-2 flex justify-center items-center'>
           <button
-            className='text-center text-2xl border-solid border-teal-500 hover:text-red-500'
+            className='bg-green-600 disabled:bg-gray-600 active:scale-[.98] active:duration-75 hover:scale-[1.01] ease-in-out mt-2 pt-1 pb-2 pl-5 pr-5 rounded-lg'
             onClick={handleIngresar}
-            disabled={Object.keys(errors).length === 0 ? false : true}
+            disabled={Object.keys(errors).length !== 0 || !login.user || !login.password  ? true : false  }
+            act
           >
             Ingresar
           </button>
@@ -96,7 +100,7 @@ const Login = () => {
       {isLoggedIn ? (
         navigate('/dashboard', { state: usuario })
       ) : (
-        <p className='text-black'>POR FAVOR INGRESA TUS CREDENCIALES VALIDAS</p>
+        <p className='text-black'>POR FAVOR INGRESA CREDENCIALES VALIDAS</p>
       )}
     </div>
   )

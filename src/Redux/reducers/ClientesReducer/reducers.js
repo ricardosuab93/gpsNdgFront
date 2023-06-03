@@ -5,7 +5,7 @@ const serverUrl = 'https://gpsback.onrender.com'
 // const serverUrl = 'http://localhost:3001'
 
 export const getClientesxDia = (userId) => (dispatch) => {
-  console.log('reducer' + userId)
+  // console.log('reducer' + userId)
   axios
     .get(
       `${serverUrl}/NORDIGESAServices/api/Clientes/RutaClientexUsuario?Usuario=${userId}`

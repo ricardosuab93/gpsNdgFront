@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useLocation, Link } from 'react-router-dom'
 import { getClientesxDia } from '../Redux/reducers/ClientesReducer/reducers.js'
 import Detail from './Detail.jsx'
+import { GiPositionMarker } from 'react-icons/gi'
 
 const Dashboard = () => {
   const { state } = useLocation()
@@ -10,21 +11,28 @@ const Dashboard = () => {
 
   const { clientes } = useSelector((state) => state.clientes)
   const dispacth = useDispatch()
-  console.log(Usuario, Nombre)
+  // console.log(Usuario, Nombre)
 
   useEffect(() => {
     dispacth(getClientesxDia(Usuario))
   }, [])
 
-  console.log(clientes)
+  // console.log(clientes)
 
   return (
-    <div>
-      <h1>Bienvenido, {Nombre.split(' ')[2]}</h1>
-      <Link to='/ubiVendedor'>  
-        <button>Mostrar mi ubicacion</button>
-      </Link>
-      <div>
+    <div className='h-screen p-7'>
+      <div className='flex flex-row justify-between items-center'>
+        <h1 className='text-xl font-bold'>
+          Bienvenid@, {Nombre.split(' ')[2]}
+        </h1>
+        <Link to='/ubiVendedor'>
+          <button className=' flex flex-col justify-center items-center bg-white rounded-lg'>
+            <GiPositionMarker />
+            Mostrar mi ubicacion
+          </button>
+        </Link>
+      </div>
+      <div className='mb-5'>
         {clientes.length > 0 ? (
           clientes.map((cliente) => (
             <Detail
@@ -37,7 +45,14 @@ const Dashboard = () => {
             />
           ))
         ) : (
-          <h2>Loading</h2>
+          <div
+            className='inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]'
+            role='status'
+          >
+            <span className='!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]'>
+              Loading...
+            </span>
+          </div>
         )}
       </div>
     </div>

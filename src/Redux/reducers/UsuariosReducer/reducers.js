@@ -5,7 +5,7 @@ const serverUrl = 'https://gpsback.onrender.com'
 // const serverUrl = 'http://localhost:3001'
 
 export const getUsuarioByLogin = (user, pass) => (dispatch) => {
-  console.log('reducer' + user)
+  // console.log('reducer' + user)
   axios
     .get(
       `${serverUrl}/NORDIGESAServices/api/Usuarios/GetUsuarioLogin?Login=${user}&PassWord=${pass}`
@@ -14,6 +14,6 @@ export const getUsuarioByLogin = (user, pass) => (dispatch) => {
       dispatch(ObtenerUsuario(response.data))
     })
     .catch((error) => {
-      console.log(error)
+      // console.log(error)
     })
 }
