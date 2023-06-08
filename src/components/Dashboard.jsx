@@ -4,6 +4,7 @@ import { useLocation, Link } from 'react-router-dom'
 import { getClientesxDia } from '../Redux/reducers/ClientesReducer/reducers.js'
 import Detail from './Detail.jsx'
 import { GiPositionMarker } from 'react-icons/gi'
+import SearchBar from './SearchBar.jsx'
 
 const Dashboard = () => {
   const { state } = useLocation()
@@ -12,6 +13,8 @@ const Dashboard = () => {
   const { clientes } = useSelector((state) => state.clientes)
   const dispacth = useDispatch()
   // console.log(Usuario, Nombre)
+
+  const nombreVendedor = Nombre.split(' ')[2]
 
   useEffect(() => {
     dispacth(getClientesxDia(Usuario))
@@ -23,7 +26,7 @@ const Dashboard = () => {
     <div className='h-screen p-7'>
       <div className='flex flex-row justify-between items-center'>
         <h1 className='text-xl font-bold'>
-          Bienvenid@, {Nombre.split(' ')[2]}
+          Bienvenid@, {nombreVendedor}
         </h1>
         <Link to='/ubiVendedor'>
           <button className=' flex flex-col justify-center items-center bg-white rounded-lg'>
@@ -31,6 +34,9 @@ const Dashboard = () => {
             Mostrar mi ubicacion
           </button>
         </Link>
+      </div>
+      <div>
+        <SearchBar />
       </div>
       <div className='mb-5'>
         {clientes.length > 0 ? (
@@ -42,6 +48,7 @@ const Dashboard = () => {
               direccion={cliente.Direccion}
               latitud={cliente.Latitud}
               longitud={cliente.Longitud}
+              vendedor={nombreVendedor}
             />
           ))
         ) : (

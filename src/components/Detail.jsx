@@ -21,7 +21,8 @@ const Detail = (props) => {
                 clientId: props.id,
                 nombre: props.nombre,
                 latitud: props.latitud,
-                longitud: props.longitud
+                longitud: props.longitud,
+                vendedor: props.vendedor
               }
             })
           }

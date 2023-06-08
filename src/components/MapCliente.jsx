@@ -1,3 +1,4 @@
+import moment from 'moment-timezone'
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useLocation, useNavigate } from 'react-router-dom'
@@ -14,7 +15,7 @@ const MapCliente = () => {
   const { cliente } = useSelector((state) => state.clientes)
   const dispatch = useDispatch()
   const { state } = useLocation()
-  const { clientId, nombre, latitud, longitud } = state
+  const { clientId, nombre, latitud, longitud, vendedor } = state
   const Latitud = +latitud
   const Longitud = +longitud
 
@@ -42,14 +43,24 @@ const MapCliente = () => {
     }
   }
 
+  // var today = new Date().toISOString()
+  // var now = today.toLocaleDateString()
+  // console.log(today)
+  // console.log(now)
+
+  const date = moment()
+    .tz('America/Lima')
+    .format('YYYY-MM-DD HH:mm:ss.SSS')
+
+    console.log(date)
   const handleCheckboxChange = (e) => {
     setIsButtonDisabled(!e.target.checked)
     getCurrentPosition()
   }
 
   const handleButtonClick = (e) => {
-    // console.log(clientId, lat, long)
-    dispatch(updateGpsCliente(clientId, lat, long))
+    console.log(clientId, lat, long, vendedor, date)
+    dispatch(updateGpsCliente(clientId, lat, long, vendedor, date))
     alert('GPS ACTUALIZADO')
     navigate(-1)
   }
@@ -73,9 +84,8 @@ const MapCliente = () => {
               type='checkbox'
               checked={!isButtonDisabled}
               onChange={handleCheckboxChange}
-            >
-            </input>
-              <BsPencilFill />
+            ></input>
+            <BsPencilFill />
           </label>
           <button
             className='bg-green-600 hover:scale-[1.01] ease-in-out rounded-lg disabled:bg-transparent disabled:text-white p-1 m-2'
