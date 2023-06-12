@@ -54,6 +54,7 @@ const MapCliente = () => {
 
     console.log(date)
   const handleCheckboxChange = (e) => {
+    console.log(clientId, lat, long, vendedor, date)
     setIsButtonDisabled(!e.target.checked)
     getCurrentPosition()
   }
