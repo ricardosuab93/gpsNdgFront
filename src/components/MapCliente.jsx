@@ -51,18 +51,22 @@ const MapCliente = () => {
   const date = moment()
     .tz('America/Lima')
     .format('YYYY-MM-DD HH:mm:ss.SSS')
-
     console.log(date)
+  
   const handleCheckboxChange = (e) => {
-    console.log(clientId, lat, long, vendedor, date)
+    setTimeout(() => {
+      console.log(clientId, lat, long, vendedor, date)      
+    }, 2000);
     setIsButtonDisabled(!e.target.checked)
     getCurrentPosition()
   }
 
   const handleButtonClick = (e) => {
+    getCurrentPosition()
     console.log(clientId, lat, long, vendedor, date)
     dispatch(updateGpsCliente(clientId, lat, long, vendedor, date))
     alert('GPS ACTUALIZADO')
+    // window.location.replace('');
     navigate(-1)
   }
 
