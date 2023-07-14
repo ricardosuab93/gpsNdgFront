@@ -54,20 +54,22 @@ const MapCliente = () => {
     console.log(date)
   
   const handleCheckboxChange = (e) => {
-    setTimeout(() => {
-      console.log(clientId, lat, long, vendedor, date)      
-    }, 2000);
+    console.log(clientId, lat, long, vendedor, date)      
     setIsButtonDisabled(!e.target.checked)
     getCurrentPosition()
   }
 
   const handleButtonClick = (e) => {
-    getCurrentPosition()
     console.log(clientId, lat, long, vendedor, date)
-    dispatch(updateGpsCliente(clientId, lat, long, vendedor, date))
-    alert('GPS ACTUALIZADO')
-    // window.location.replace('');
-    navigate(-1)
+    if( lat == 0 || long == 0 ){
+      alert('INTENTALO DE NUEVO')
+      setIsButtonDisabled(!e.target.checked)
+    }else {
+      dispatch(updateGpsCliente(clientId, lat, long, vendedor, date))
+      alert('GPS ACTUALIZADO')
+      // window.location.replace('');
+      navigate(-1)
+    }
   }
 
   useEffect(() => {
