@@ -15,6 +15,7 @@ const Dashboard = () => {
   // console.log(Usuario, Nombre)
 
   const nombreVendedor = Nombre.split(' ')[2]
+  const nombreVendedor2 = Nombre.split(' ')[2]+Nombre.split(' ')[0]
 
   useEffect(() => {
     dispacth(getClientesxDia(Usuario))
@@ -48,7 +49,7 @@ const Dashboard = () => {
               direccion={cliente.Direccion}
               latitud={cliente.Latitud}
               longitud={cliente.Longitud}
-              vendedor={nombreVendedor}
+              vendedor={nombreVendedor2}
             />
           ))
         ) : (

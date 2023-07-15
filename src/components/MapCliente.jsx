@@ -43,11 +43,6 @@ const MapCliente = () => {
     }
   }
 
-  // var today = new Date().toISOString()
-  // var now = today.toLocaleDateString()
-  // console.log(today)
-  // console.log(now)
-
   const date = moment()
     .tz('America/Lima')
     .format('YYYY-MM-DD HH:mm:ss.SSS')
@@ -62,7 +57,7 @@ const MapCliente = () => {
   const handleButtonClick = (e) => {
     console.log(clientId, lat, long, vendedor, date)
     if( lat == 0 || long == 0 ){
-      alert('INTENTALO DE NUEVO')
+      alert('OCURRIO UN ERROR, INTENTALO DE NUEVO')
       setIsButtonDisabled(!e.target.checked)
     }else {
       dispatch(updateGpsCliente(clientId, lat, long, vendedor, date))
